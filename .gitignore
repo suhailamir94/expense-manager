@@ -1,1 +1,5 @@
 node_modules/
+public/*.js
+public/*.css
+public/*.map
+public/bundle.js.LICENSE.txt
