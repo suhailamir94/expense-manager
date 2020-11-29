@@ -13,6 +13,7 @@ export default class ExpenseForm extends React.Component {
     this.onDateChange = this.onDateChange.bind(this);
     this.onFocusChange = this.onFocusChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    console.log(props.expense);
     this.state = {
       description: props.expense ? props.expense.description : "",
       amount: props.expense ? props.expense.amount.toString() : "",

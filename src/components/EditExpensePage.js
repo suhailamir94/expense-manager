@@ -9,16 +9,16 @@ export const EditExpensePage = props => {
       <ExpenseForm
         expense={props.expense}
         onSubmit={expense => {
-          props.onSubmit(props.expense.id, expense);
+          props.startEditExpense(props.expense.id, expense);
           // this is how we redirect from one page to another through JS in React Router
-          props.history.push("/");
+          props.history.push("/dashboard");
         }}
       />
       <button
         onClick={() => {
           props.onClickRemove(props.expense.id);
           // props.dispatch(removeExpense({ id: props.expense.id }));
-          props.history.push("/");
+          props.history.push("/dashboard");
         }}
       >
         REMOVE
@@ -32,7 +32,7 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onSubmit: (id, expense) => dispatch(editExpense(id, expense)),
+  startEditExpense: (id, expense) => dispatch(editExpense(id, expense)),
   onClickRemove: id => dispatch(removeExpense({ id })),
 });
 

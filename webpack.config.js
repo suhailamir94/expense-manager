@@ -3,11 +3,12 @@
 //webpack.js.org/configuration
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
+require("@babel/polyfill");
 module.exports = env => {
   const isProduction = (env && env.production) || false;
   console.log(isProduction);
   return {
-    entry: "./src/app.js",
+    entry: ["@babel/polyfill", "./src/app.js"],
     output: {
       path: path.join(__dirname, "public", "dist"),
       filename: "bundle.js",

@@ -11,7 +11,7 @@ beforeEach(() => {
   history = { push: jest.fn() };
   wrapper = shallow(
     <EditExpensePage
-      onSubmit={onSubmitSpy}
+      startEditExpense={onSubmitSpy}
       history={history}
       onClickRemove={onClickRemoveSpy}
       expense={expenses[0]}

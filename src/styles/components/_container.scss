@@ -1,0 +1,20 @@
+.container-row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.container-column {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.container {
+  margin: 0 auto;
+  padding: $l-size;
+}
+
+.filter-list-container {
+  display: flex;
+  justify-content: space-between;
+}

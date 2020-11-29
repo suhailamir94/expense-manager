@@ -26,19 +26,19 @@ test("should return add expense action object with provided values", () => {
   const action = addExpense(expenseData);
   expect(action).toEqual({
     type: "ADD_EXPENSE",
-    expense: { ...expenseData, id: expect.any(String) },
+    expense: { ...expenseData },
   });
 });
 
-test("should return add expense action object with default values", () => {
-  expect(addExpense({})).toEqual({
-    type: "ADD_EXPENSE",
-    expense: {
-      description: "",
-      note: "",
-      amount: 0,
-      createdAt: 0,
-      id: expect.any(String),
-    },
-  });
-});
+// test("should return add expense action object with default values", () => {
+//   expect(addExpense({})).toEqual({
+//     type: "ADD_EXPENSE",
+//     expense: {
+//       description: "",
+//       note: "",
+//       amount: 0,
+//       createdAt: 0,
+//       id: expect.any(String),
+//     },
+//   });
+// });

@@ -26,7 +26,7 @@ test("should not remove expense id id not found", () => {
 
 test("should add expense ", () => {
   const action = {
-    type: "ADD_EXPENSE",
+    type: "ADD_EXPENSE_SUCCEEDED",
     expense: {
       id: "4",
       description: "food",
