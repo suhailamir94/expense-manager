@@ -26,15 +26,9 @@ const startLogout = () => {
   return firebase.auth().signOut();
 };
 
-const addExpenseFirebase = async expense => {
-  const ref = await database.ref("expenses").push(expense);
-  console.log(ref.key);
-  return ref.key;
-};
-
-const getAllExpensesFirebase = async () => {
+const getAllExpensesFirebase = async userId => {
   const expenses = [];
-  const snapshot = await database.ref("expenses").once("value");
+  const snapshot = await database.ref(`users/${userId}/expenses`).once("value");
   snapshot.forEach(childSnapshot => {
     expenses.push({ id: childSnapshot.key, ...childSnapshot.val() });
   });
@@ -42,12 +36,18 @@ const getAllExpensesFirebase = async () => {
   return expenses;
 };
 
-const editExpenseFirebase = async ([id, updates]) => {
-  await database.ref(`expenses/${id}`).update(updates);
+const addExpenseFirebase = async ([expense, userId]) => {
+  const ref = await database.ref(`users/${userId}/expenses`).push(expense);
+  console.log(ref.key);
+  return ref.key;
 };
 
-const removeExpenseFirebase = async id => {
-  await database.ref(`expenses/${id}`).remove();
+const editExpenseFirebase = async ([id, updates, userId]) => {
+  await database.ref(`users/${userId}/expenses/${id}`).update(updates);
+};
+
+const removeExpenseFirebase = async ([id, userId]) => {
+  await database.ref(`users/${userId}/expenses/${id}`).remove();
 };
 export {
   firebase,

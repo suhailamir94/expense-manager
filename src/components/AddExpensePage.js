@@ -8,7 +8,7 @@ export const AddExpensePage = props => (
     <h1>Add Expense</h1>
     <ExpenseForm
       onSubmit={expense => {
-        props.startAddExpense(expense); // this onSubmit is passed to props by the mapDispatchToProps method defined below
+        props.startAddExpense(expense, props.userId); // this onSubmit is passed to props by the mapDispatchToProps method defined below
         // this is how we redirect from one page to another through JS in React Router
         props.history.push("/dashboard");
       }}
@@ -17,6 +17,9 @@ export const AddExpensePage = props => (
 );
 
 const mapDispatchToProps = dispatch => ({
-  startAddExpense: expense => dispatch(addExpense(expense)),
+  startAddExpense: (expense, userId) => dispatch(addExpense(expense, userId)),
 });
-export default connect(undefined, mapDispatchToProps)(AddExpensePage);
+
+const mapStateToProps = state => ({ userId: state.auth.userId });
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddExpensePage);

@@ -9,14 +9,14 @@ export const EditExpensePage = props => {
       <ExpenseForm
         expense={props.expense}
         onSubmit={expense => {
-          props.startEditExpense(props.expense.id, expense);
+          props.startEditExpense(props.expense.id, expense, props.userId);
           // this is how we redirect from one page to another through JS in React Router
           props.history.push("/dashboard");
         }}
       />
       <button
         onClick={() => {
-          props.onClickRemove(props.expense.id);
+          props.onClickRemove(props.expense.id, props.userId);
           // props.dispatch(removeExpense({ id: props.expense.id }));
           props.history.push("/dashboard");
         }}
@@ -29,11 +29,13 @@ export const EditExpensePage = props => {
 
 const mapStateToProps = (state, props) => ({
   expense: state.expenses.find(expense => expense.id === props.match.params.id),
+  userId: state.auth.userId,
 });
 
 const mapDispatchToProps = dispatch => ({
-  startEditExpense: (id, expense) => dispatch(editExpense(id, expense)),
-  onClickRemove: id => dispatch(removeExpense({ id })),
+  startEditExpense: (id, expense, userId) =>
+    dispatch(editExpense(id, expense, userId)),
+  onClickRemove: (id, userId) => dispatch(removeExpense({ id, userId })),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditExpensePage);

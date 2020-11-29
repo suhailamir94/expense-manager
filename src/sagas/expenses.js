@@ -9,7 +9,7 @@ import {
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
 function* addExpenseAsync(action) {
   try {
-    const id = yield call(addExpenseFirebase, action.expense);
+    const id = yield call(addExpenseFirebase, [action.expense, action.userId]);
     yield put({
       type: "ADD_EXPENSE_SUCCEEDED",
       expense: { id, ...action.expense },
@@ -18,9 +18,9 @@ function* addExpenseAsync(action) {
     yield put({ type: "ADD_EXPENSE_FAILED", message: e.message });
   }
 }
-function* editExpenseAsync({ id, updates }) {
+function* editExpenseAsync({ id, updates, userId }) {
   try {
-    yield call(editExpenseFirebase, [id, updates]);
+    yield call(editExpenseFirebase, [id, updates, userId]);
     yield put({
       type: "EDIT_EXPENSE_SUCCEEDED",
       id,
@@ -30,9 +30,9 @@ function* editExpenseAsync({ id, updates }) {
     yield put({ type: "ADD_EXPENSE_FAILED", message: e.message });
   }
 }
-function* removeExpenseAsync({ id }) {
+function* removeExpenseAsync({ id, userId }) {
   try {
-    yield call(removeExpenseFirebase, id);
+    yield call(removeExpenseFirebase, [id, userId]);
     yield put({
       type: "REMOVE_EXPENSE_SUCCEEDED",
       id,
@@ -43,7 +43,7 @@ function* removeExpenseAsync({ id }) {
 }
 function* getExpensesAsync(action) {
   try {
-    const expenses = yield call(getAllExpensesFirebase);
+    const expenses = yield call(getAllExpensesFirebase, action.userId);
     yield put({
       type: "GET_EXPENSES_SUCCEEDED",
       expenses,

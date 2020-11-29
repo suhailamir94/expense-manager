@@ -33,7 +33,7 @@ firebase.auth().onAuthStateChanged(user => {
       type: "LOGIN_SUCCEEDED",
       uid: user.uid,
     });
-    store.dispatch({ type: "GET_EXPENSES" });
+    store.dispatch({ type: "GET_EXPENSES", userId: user.uid });
     renderApp();
     if (history.location.pathname === "/") {
       history.push("/dashboard");
