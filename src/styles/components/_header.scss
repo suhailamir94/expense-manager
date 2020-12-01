@@ -1,25 +1,14 @@
 .header {
   background: $off-black;
   color: #fff;
-  //   margin-bottom: $xl-size;
-  padding: $m-size 0;
 }
 
-.menu {
+.header__title {
+  text-decoration: none;
+  color: #fff;
+}
+.header__content {
   display: flex;
-  margin-top: $m-size;
-  color: white;
-}
-.menu .menu-item {
-  padding: $m-size;
-  text-decoration: none;
-}
-
-.menu .menu-item:hover {
-  padding: $m-size;
-  text-decoration: none;
-  color: $off-white;
-}
-.menu .is-active {
-  color: $off-white;
+  justify-content: space-between;
+  align-items: center;
 }

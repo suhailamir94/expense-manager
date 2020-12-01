@@ -1,20 +1,10 @@
-.container-row {
-  display: flex;
-  justify-content: space-around;
-}
-
-.container-column {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-}
-
-.container {
+.content-container {
+  max-width: 120rem;
   margin: 0 auto;
-  padding: $l-size;
+  padding: 0 $m-size;
 }
 
-.filter-list-container {
+.button-container {
   display: flex;
   justify-content: space-between;
 }

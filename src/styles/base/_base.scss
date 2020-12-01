@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
   font-size: 62.5%;
 }
@@ -5,6 +9,9 @@ html {
 body {
   font-family: Helvetica, Arial, sans-serif;
   font-size: $m-size;
+  columns: $dark-grey;
+  line-height: 1.6;
+  box-sizing: border-box;
 }
 
 button {
@@ -13,8 +20,4 @@ button {
 
 button:disabled {
   cursor: default;
-}
-
-.is-active {
-  font-weight: bold;
 }

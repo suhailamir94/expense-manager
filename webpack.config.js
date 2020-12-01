@@ -27,7 +27,7 @@ module.exports = env => {
       ],
     },
     plugins: [new MiniCssExtractPlugin({ filename: "styles.css" })],
-    devtool: isProduction ? "source-map" : "cheap-source-map",
+    devtool: isProduction ? "source-map" : "eval-cheap-source-map",
     devServer: {
       contentBase: path.join(__dirname, "public"),
       historyApiFallback: true,

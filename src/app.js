@@ -6,6 +6,7 @@ import configureStore from "./store/configureStore";
 import "normalize.css/normalize.css";
 import "./styles/styles.scss";
 import "react-dates/lib/css/_datepicker.css";
+import Loader from "./components/Loader";
 
 import { firebase } from "./firebase/firebase";
 import { history } from "./routers/AppRouter";
@@ -26,9 +27,10 @@ const renderApp = () => {
   }
 };
 
+ReactDOM.render(<Loader />, document.getElementById("app"));
+
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
-    console.log("logged in");
     store.dispatch({
       type: "LOGIN_SUCCEEDED",
       uid: user.uid,

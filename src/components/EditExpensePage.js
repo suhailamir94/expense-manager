@@ -6,23 +6,25 @@ import { editExpense, removeExpense } from "../actions/expenses";
 export const EditExpensePage = props => {
   return (
     <div>
-      <ExpenseForm
-        expense={props.expense}
-        onSubmit={expense => {
-          props.startEditExpense(props.expense.id, expense, props.userId);
-          // this is how we redirect from one page to another through JS in React Router
-          props.history.push("/dashboard");
-        }}
-      />
-      <button
-        onClick={() => {
-          props.onClickRemove(props.expense.id, props.userId);
-          // props.dispatch(removeExpense({ id: props.expense.id }));
-          props.history.push("/dashboard");
-        }}
-      >
-        REMOVE
-      </button>
+      <div className="page-header">
+        <div className="content-container">
+          <h1 className="page-header__title">Edit Expense</h1>
+        </div>
+      </div>
+      <div className="content-container">
+        <ExpenseForm
+          expense={props.expense}
+          onSubmit={expense => {
+            props.startEditExpense(props.expense.id, expense, props.userId);
+            // this is how we redirect from one page to another through JS in React Router
+            props.history.push("/dashboard");
+          }}
+          onClickRemove={() => {
+            props.onClickRemove(props.expense.id, props.userId);
+            props.history.push("/dashboard");
+          }}
+        />
+      </div>
     </div>
   );
 };
