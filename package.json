@@ -1,7 +1,8 @@
 {
   "name": "expensify",
+  "homepage": "https://suhailamir94.github.io/expense-manager",
   "version": "1.0.0",
-  "description": "Boilerplate",
+  "description": "Expense Manager",
   "main": "index.js",
   "scripts": {
     "build:dev": "webpack",
@@ -10,12 +11,19 @@
     "dev-server": "webpack serve",
     "test": "jest --config=jest.config.json",
     "start": "node server/server.js",
-    "heroku-postbuild": "npm run build:prod"
+    "heroku-postbuild": "npm run build:prod",
+    "predeploy": "npm run build:prod",
+    "deploy": "gh-pages -d public"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-brands-svg-icons": "^5.15.1",
+    "@fortawesome/free-regular-svg-icons": "^5.15.1",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.13",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.1",

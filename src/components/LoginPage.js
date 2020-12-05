@@ -1,5 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+
 import { startLogin } from "../actions/auth";
 
 const LoginPage = ({ startLogin }) => {
@@ -9,7 +12,8 @@ const LoginPage = ({ startLogin }) => {
         <h1 className="box-layout__title">Expensify</h1>
         <p>It's time to get your expenses under control.</p>
         <button className="button" onClick={startLogin}>
-          Login with Google
+          Login with
+          <FontAwesomeIcon className="button__google" icon={faGoogle} />
         </button>
       </div>
     </div>
